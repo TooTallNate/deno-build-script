@@ -5,8 +5,10 @@ DENO_VERSION="1.21.0"
 
 # First, ensure that Deno is available
 ARCH="x86_64"
-#PLATFORM="apple-darwin"
 PLATFORM="unknown-linux-gnu"
+if [ "$(uname -s)" = "Darwin" ]; then
+  PLATFORM="apple-darwin"
+fi
 DENO_PATH=".vercel/cache/deno/bin-$ARCH-$PLATFORM-v$DENO_VERSION"
 if [ ! -x "$DENO_PATH/deno" ]; then
     mkdir -p "$DENO_PATH"
